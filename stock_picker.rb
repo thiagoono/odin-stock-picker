@@ -1,20 +1,26 @@
 # Declare the method that returns the best pair of days
 def stock_picker(stock_prices)
+  # Declare the varialbes that will sva the information necessary
   smallest = 0
   biggest_difference = 0
   best_pair = [0, 0]
 
+  # Iterates through each value of the array
   stock_prices.each_with_index do | price, index |
+    # Checks if the current price is smaller than the smallest found
     if price < stock_prices[smallest]
       smallest = index
       next
     end
 
+    # Checks if the selling of the current stock will create the highest profit
     if price - stock_prices[smallest] > biggest_difference
+      # Store the indexes of the best pair found and the profit from it
       best_pair = [smallest, index]
       biggest_difference = price - stock_prices[smallest]
     end
   end
+  # Returns the best pair found in the array
   best_pair
 end
 
